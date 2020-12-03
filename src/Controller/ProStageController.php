@@ -8,9 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProStageController extends AbstractController
 {
-    /**
-     * @Route("/", name="pro_stage_accueil")
-     */
     public function index(): Response
     {
         return $this->render('pro_stage/index.html.twig', [
