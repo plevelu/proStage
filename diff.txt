@@ -1,0 +1,28 @@
+diff --git a/src/Controller/ProStageController.php b/src/Controller/ProStageController.php
+index 16e10ec..dbb2d30 100644
+--- a/src/Controller/ProStageController.php
++++ b/src/Controller/ProStageController.php
+@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
+ 
+ class ProStageController extends AbstractController
+ {
++  /**
++  * @Route("/", name="pro_stage_accueil")
++  */
+     public function index(): Response
+     {
+         return $this->render('pro_stage/index.html.twig');
+@@ -17,10 +20,10 @@ class ProStageController extends AbstractController
+     */
+     public function afficherEntreprises(): Response
+     {
+-        return $this->render('pro_stage/affichageEntreprises.twig');
+-    }
++        return $this->render('pro_stage/affichageEntreprises.html.twig');
++    }/*
+     public function afficherFormations(): Response
+     {
+         return $this->render('pro_stage/affichageFormations.twig');
+-    }
++    }*/
+ }
