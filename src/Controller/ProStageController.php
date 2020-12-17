@@ -12,4 +12,15 @@ class ProStageController extends AbstractController
     {
         return $this->render('pro_stage/index.html.twig');
     }
+    /**
+    * @Route("/entreprises", name="proStage/entreprises")
+    */
+    public function afficherEntreprises(): Response
+    {
+        return $this->render('pro_stage/affichageEntreprises.twig');
+    }
+    public function afficherFormations(): Response
+    {
+        return $this->render('pro_stage/affichageFormations.twig');
+    }
 }
