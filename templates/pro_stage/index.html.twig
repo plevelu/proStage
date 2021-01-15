@@ -3,14 +3,14 @@
 {% block body %}
 <div class="container">
 <h1>Bienvenue sur la page d'acceuil de ProStage<h1>
-<p>
-cette page présentera bientot tous les stages
-</p>
+<p>cette page présentera bientot tous les stages</p>
 <div class="row">
-{% for i in 0..10 %}
+{% for stage in stages %}
 <div class="col-md-6">
 <div class="card">
-ifdiuifdui
+<h2>{{stage.intitule}}</h2>
+<p>==============</p><br/>
+<p>le titre ci dessus est extrait de la bdd</p>
 </div>
 </div>
 {% endfor %}
