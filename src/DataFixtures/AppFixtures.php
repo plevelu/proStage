@@ -29,6 +29,7 @@ class AppFixtures extends Fixture
             $manager->persist($formation); //enregistrement des formations
           }
         //génération entreprises
+          $tabEntreprises = array();//création d'un array pour y stocker la liste des entreprises
           $listeEntreprises = array(
             "kodibear" => array("développement Android" => "une adresse"),
             "swingingSeal" => array("développement Android" => "une autre adresse"),
@@ -43,6 +44,7 @@ class AppFixtures extends Fixture
               $entreprise->setAdresse($adresseETP);
             }
             $manager->persist($entreprise); //enregistrement des entreprises
+            array_push($tabEntreprises,$entreprise);
           }
         //génération des stages
         //commencont par en faire un fonctionelle
@@ -51,6 +53,7 @@ class AppFixtures extends Fixture
           $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->addFormation($tabFormations[1]);
+          $stage->setEntreprise($tabEntreprises[0]);
           $manager->persist($stage);
         $manager->flush();
     }
