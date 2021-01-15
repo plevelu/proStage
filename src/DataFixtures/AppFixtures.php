@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
+use App\Entity\Stage;
 
 class AppFixtures extends Fixture
 {
@@ -14,30 +15,38 @@ class AppFixtures extends Fixture
         //générateur données faker
         $faker = \Faker\Factory::create('fr_FR');
         //génération formation
-          $formation = new Formation();
-          $formation->setNom("IUT INFO");
-          $formation->setDescription("formation technique en informatique niveau bac+2");
-          $manager->persist($formation);
-          $formation = new Formation();
-          $formation->setNom("IUT GEEI");
-          $formation->setDescription("formation technique en génie industrielle niveau bac+2");
-          $manager->persist($formation);
-          $formation = new Formation();
-          $formation->setNom("Liscence PA");
-          $formation->setDescription("formation en informatique niveau bac+3");
-          $manager->persist($formation);
+          $IUTinfo = new Formation();
+          $IUTinfo->setNom("IUT INFO");
+          $IUTinfo->setDescription("formation technique en informatique niveau bac+2");
+          $IUTgeei = new Formation();
+          $IUTgeei->setNom("IUT GEEI");
+          $IUTgeei->setDescription("formation technique en génie industrielle niveau bac+2");
+          $liscencePA = new Formation();
+          $liscencePA->setNom("Liscence PA");
+          $liscencePA->setDescription("formation en informatique niveau bac+3");
+          $tabFormations = array($IUTinfo,$IUTgeei,$liscencePA); //staockages des formations dans un tableau
+          foreach ($tabFormations as $formation) { //parcours du tableau
+            $manager->persist($formation); //enregistrement des formations
+          }
         //génération entreprises
-          $entreprise = new Entreprise();
-          $entreprise->setNom("FuturaKode");
-          $entreprise->setActivite("Programmation web");
-          $entreprise->setAdresse($faker->realText($maxNbChars = 15,$indexSize = 2));
-          $manager->persist($entreprise);
-          $entreprise = new Entreprise();
-          $entreprise->setNom("Armée404");
-          $entreprise->setActivite("cyber sécurité");
-          $entreprise->setAdresse($faker->realText($maxNbChars = 15,$indexSize = 2));
-          $manager->persist($entreprise);
-
+          $listeEntreprises = array(
+            "kodibear" => "développement Android",
+            "swingingSeal" => "développement Android",
+            "FuturaKode" => "Programmation web",
+            "Armée404" => "cyber sécurité"
+          );
+          foreach ($listeEntreprises as $nomETP => $activiteETP) { //parcours du tableau des entreprises
+            $entreprise = new Entreprise();
+            $entreprise->setNom($nomETP);
+            $entreprise->setActivite($activiteETP);
+            $entreprise->setAdresse($faker->realText($maxNbChars = 15,$indexSize = 2));
+            $manager->persist($entreprise); //enregistrement des entreprises
+          }
+        //génération des stages
+          $stage = new Stage();
+          $stage->setIntitule($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
         $manager->flush();
     }
 }
