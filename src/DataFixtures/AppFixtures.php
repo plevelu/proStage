@@ -30,23 +30,28 @@ class AppFixtures extends Fixture
           }
         //génération entreprises
           $listeEntreprises = array(
-            "kodibear" => "développement Android",
-            "swingingSeal" => "développement Android",
-            "FuturaKode" => "Programmation web",
-            "Armée404" => "cyber sécurité"
+            "kodibear" => array("développement Android" => "une adresse"),
+            "swingingSeal" => array("développement Android" => "une autre adresse"),
+            "FuturaKode" => array("Programmation web" => "toujour une adresse tu t'attendais à quoi ?"),
+            "Armée404" => array("cyber sécurité" => "j'en ai marre")
           );
-          foreach ($listeEntreprises as $nomETP => $activiteETP) { //parcours du tableau des entreprises
+          foreach ($listeEntreprises as $nomETP => $infoETP) { //parcours du tableau des entreprises
             $entreprise = new Entreprise();
             $entreprise->setNom($nomETP);
-            $entreprise->setActivite($activiteETP);
-            $entreprise->setAdresse($faker->realText($maxNbChars = 15,$indexSize = 2));
+            foreach ($infoETP as $activiteETP => $adresseETP) {
+              $entreprise->setActivite($activiteETP);
+              $entreprise->setAdresse($adresseETP);
+            }
             $manager->persist($entreprise); //enregistrement des entreprises
           }
         //génération des stages
+        //commencont par en faire un fonctionelle
           $stage = new Stage();
-          $stage->setIntitule($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->setIntitule("stage test 1");
           $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->addFormation($tabFormations[1]);
+          $manager->persist($stage);
         $manager->flush();
     }
 }
