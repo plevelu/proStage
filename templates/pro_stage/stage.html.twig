@@ -1,13 +1,9 @@
 {% extends "base.html.twig" %}
-{% block title %}bienvenue sur la page du stage {{id_Stage}}{% endblock %}
+{% block title %}bienvenue sur la page du stage {{stage.intitule}} {% endblock %}
 {% block body %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <h1>Voici le stage {{id_Stage}}</h1>
-    </body>
-</html>
+<br/><br/>
+<div class="container">
+  <h1>Voici le stage {{stage.intitule}}</h1>
+  <h3>Mis en ligne par l'entreprise: {{stage.entreprise.nom}}</h3>
+</div>
 {% endblock %}

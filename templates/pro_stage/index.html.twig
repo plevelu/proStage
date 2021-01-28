@@ -3,14 +3,14 @@
 {% block body %}
 <div class="container">
 <h1>Bienvenue sur la page d'acceuil de ProStage<h1>
-<p>cette page présentera bientot tous les stages</p>
 <div class="row">
 {% for stage in stages %}
 <div class="col-md-6">
 <div class="card">
-<h2>{{stage.intitule}}</h2>
-<p>==============</p><br/>
-<p>le titre ci dessus est extrait de la bdd</p>
+<a href="{{path('proStage_stages',{id:stage.getId()})}}">
+<h3>nom du stage: {{stage.intitule}}</h3>
+</a>
+<h3>Entreprise: {{stage.entreprise.nom}}</h3>
 </div>
 </div>
 {% endfor %}

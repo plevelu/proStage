@@ -49,14 +49,14 @@ class AppFixtures extends Fixture
         //génération des stages
         //commencont par en faire un fonctionelle
           $stage = new Stage();
-          $stage->setIntitule("stage test 1");
+          $stage->setIntitule($faker->realText($maxNbChars = 10,$indexSize = 2));
           $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->addFormation($tabFormations[1]);
           $stage->setEntreprise($tabEntreprises[0]);
           $manager->persist($stage);
           $stage = new Stage();
-          $stage->setIntitule("stage test 2");
+          $stage->setIntitule($faker->realText($maxNbChars = 10,$indexSize = 2));
           $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->addFormation($tabFormations[1]);
@@ -64,11 +64,27 @@ class AppFixtures extends Fixture
           $stage->setEntreprise($tabEntreprises[2]);
           $manager->persist($stage);
           $stage = new Stage();
-          $stage->setIntitule("stage test 3");
+          $stage->setIntitule($faker->realText($maxNbChars = 10,$indexSize = 2));
           $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
           $stage->addFormation($tabFormations[2]);
           $stage->setEntreprise($tabEntreprises[3]);
+          $manager->persist($stage);
+          $stage = new Stage();
+          $stage->setIntitule($faker->realText($maxNbChars = 10,$indexSize = 2));
+          $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->addFormation($tabFormations[1]);
+          $stage->setEntreprise($tabEntreprises[3]);
+          $manager->persist($stage);
+          $stage = new Stage();
+          $stage->setIntitule($faker->realText($maxNbChars = 10,$indexSize = 2));
+          $stage->setMission($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->setAdresseMail($faker->realText($maxNbChars = 15,$indexSize = 2));
+          $stage->addFormation($tabFormations[2]);
+          $stage->addFormation($tabFormations[1]);
+          $stage->addFormation($tabFormations[0]);
+          $stage->setEntreprise($tabEntreprises[2]);
           $manager->persist($stage);
         $manager->flush();
     }
