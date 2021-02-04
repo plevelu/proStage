@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block title %}Stages proposé par {{stages[0].formation.nom}} {% endblock %}
+{% block body %}
+<br/><br/>
+<div class="container">
+  <div class="row">
+    {% for stage in stages %}
+    <div class="col-md-6">
+      <div class="card">
+        <a href="{{path('proStage_stages',{id:stage.getId()})}}">
+          <h3>nom du stage: {{stage.intitule}}</h3>
+        </a>
+        <h3>Entreprise: {{stage.entreprise.nom}}</h3>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -2,18 +2,20 @@
 {% block title %}list FMT{% endblock %}
 {% block body %}
 <div class="container">
-<h1>liste des formations</h1>
-<p>Cette page affichera la liste des formations de l'IUT</p>
-<div class="row">
-{% for formation in formations%}
-<div class="col-md-6">
-<div class="card">
-<h1>{{formation.nom}}</h1>
-<p>================</p><br/>
-<p>{{formation.description}}</p>
-</div>
-</div>
-{% endfor %}
-</div>
+  <h1>liste des formations</h1>
+  <p>Cette page affiche la liste des formations de l'IUT</p>
+  <div class="row">
+    {% for formation in formations%}
+    <div class="col-md-6">
+      <div class="card">
+        <a href="{{path('proStage_stagesFormations',{formation:formation.getId()})}}">
+          <h1>{{formation.nom}}</h1>
+        </a>
+        <p>================</p><br/>
+        <p>{{formation.description}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

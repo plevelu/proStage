@@ -42,6 +42,26 @@ class ProStageController extends AbstractController
     }
 
     /**
+     * @Route("/stageETP/{entreprise}", name="proStage_stagesEntreprise")
+    */
+    public function afficherStagesETP($entreprise): Response
+    {
+        $repositoryStage = $this-> getDoctrine()->getRepository(Stage::class);
+        $stages = $repositoryStage->findByEntreprise($entreprise);
+        return $this->render('pro_stage/stageETP.html.twig',['stages'=>$stages]);
+    }
+
+    /**
+     * @Route("/stageFMT/{formations}", name="proStage_stagesFormations")
+    */
+    public function afficherStagesFMT($formation): Response
+    {
+        $repositoryStage = $this-> getDoctrine()->getRepository(Stage::class);
+        $stages = $repositoryStage->findByFormation($formation);
+        return $this->render('pro_stage/stageFMT.html.twig',['stages'=>$stages]);
+    }
+
+    /**
      * @Route("/stage/{id}", name="proStage_stages")
     */
     public function afficherStage($id): Response
