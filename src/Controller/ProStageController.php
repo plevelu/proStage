@@ -52,13 +52,13 @@ class ProStageController extends AbstractController
     }
 
     /**
-     * @Route("/stageFMT/{formations}", name="proStage_stagesFormations")
+     * @Route("/stageFMT/{formation}", name="proStage_stagesFormations")
     */
     public function afficherStagesFMT($formation): Response
     {
-        $repositoryStage = $this-> getDoctrine()->getRepository(Stage::class);
-        $stages = $repositoryStage->findByFormation($formation);
-        return $this->render('pro_stage/stageFMT.html.twig',['stages'=>$stages]);
+        $repositoryFormation = $this-> getDoctrine()->getRepository(Formation::class);
+        $uneFormation = $repositoryFormation->find($formation);
+        return $this->render('pro_stage/stageFMT.html.twig',['formation'=>$uneFormation]);
     }
 
     /**

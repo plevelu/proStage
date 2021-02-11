@@ -2,18 +2,18 @@
 {% block title %}bienvenue page acceuil{% endblock %}
 {% block body %}
 <div class="container">
-<h1>Bienvenue sur la page d'acceuil de ProStage<h1>
-<div class="row">
-{% for stage in stages %}
-<div class="col-md-6">
-<div class="card">
-<a href="{{path('proStage_stages',{id:stage.getId()})}}">
-<h3>nom du stage: {{stage.intitule}}</h3>
-</a>
-<h3>Entreprise: {{stage.entreprise.nom}}</h3>
-</div>
-</div>
-{% endfor %}
-</div>
+  <h1>Bienvenue sur la page d'acceuil de ProStage<h1>
+  <div class="row">
+    {% for stage in stages %}
+    <div class="col-md-6">
+      <div class="card">
+        <a href="{{path('proStage_stages',{id:stage.getId()})}}">
+          <h3>nom du stage: {{stage.intitule}}</h3>
+        </a>
+        <h3>Entreprise: {{stage.entreprise.nom}}</h3>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
