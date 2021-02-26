@@ -47,7 +47,7 @@ class ProStageController extends AbstractController
     public function afficherStagesETP($entreprise): Response
     {
         $repositoryStage = $this-> getDoctrine()->getRepository(Stage::class);
-        $stages = $repositoryStage->findByEntreprise($entreprise);
+        $stages = $repositoryStage->fetchNomEntrepriseQueryBuilder($entreprise);
         return $this->render('pro_stage/stageETP.html.twig',['stages'=>$stages]);
     }
 
@@ -56,9 +56,9 @@ class ProStageController extends AbstractController
     */
     public function afficherStagesFMT($formation): Response
     {
-        $repositoryFormation = $this-> getDoctrine()->getRepository(Formation::class);
-        $uneFormation = $repositoryFormation->find($formation);
-        return $this->render('pro_stage/stageFMT.html.twig',['formation'=>$uneFormation]);
+        $repositoryStage = $this-> getDoctrine()->getRepository(Stage::class);
+        $stages = $repositoryStage->fetchNomFormationDQL($formation);
+        return $this->render('pro_stage/stageFMT.html.twig',['stages'=>$stages]);
     }
 
     /**

@@ -8,7 +8,7 @@
     {% for formation in formations%}
     <div class="col-md-6">
       <div class="card">
-        <a href="{{path('proStage_stagesFormations',{formation:formation.getId()})}}">
+        <a href="{{path('proStage_stagesFormations',{formation:formation.getNom()})}}">
           <h1>{{formation.nom}}</h1>
         </a>
         <p>================</p><br/>

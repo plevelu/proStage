@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title %}list ETP{% endblock %}
 {% block body %}
+<br/><br/>
 <div class="container">
   <h1>Liste des entreprises</h1>
   <p>Cette page affiche la liste des entreprises proposant un stage</p>
@@ -8,7 +9,7 @@
     {% for entreprise in entreprises%}
     <div class="col-md-6">
       <div class="card">
-        <a href="{{path('proStage_stagesEntreprise',{entreprise:entreprise.getId()})}}">
+        <a href="{{path('proStage_stagesEntreprise',{entreprise:entreprise.getNom()})}}">
           <h1>{{entreprise.nom}}</h1>
         </a>
         <p>================</p><br/>
